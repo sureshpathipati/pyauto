@@ -6,7 +6,7 @@ def setup(request):
 
 def test_login_page(setUp):
 		browser = setUp
-		browser.base_page().navigate_to_url("https://storyweaver.org.in")
+		browser.base_page().navigate_to_url("https://dev.pbees.party")
 		browser.login_page().login_with({"email": "abcd@abcd.com", "password": "qwerty"})
 
 

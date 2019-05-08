@@ -1,21 +1,27 @@
-# pyauto
-Yet to add ReadMe
+# PyAuto
+
+Repo to automate basic sanity flow
+
+PyAuto is build on pytest.
+
 
 
 Requriments:
 
-
-Installation:
-1.Install virtualenv
-    "pip3 install virtualenv"
-2.create virtual env
-    "virtualenv <env_name>"
-    ex: virtualenv pyauto
-3.open the virtual env
-    "source <folder_name>/bin/activate"
-    ex: source pyauto/bin/activate
-
-
-
-
-To Deactivate the virtual env use "deactivate" command
+### Installation
+- Clone the repo
+- Install virtualenv
+```sh
+        $ pip3 install virtualenv
+ ```
+- Create virtual env
+ ```sh
+        $ virtualenv <env_name>
+        ex: virtualenv pyauto
+```
+- Open the virtual env(For winodows omit source)
+ ```sh
+        $ source <folder_name>/bin/activate
+        ex: source pyauto/bin/activate
+```
+-To Deactivate the virtual env use "deactivate" command

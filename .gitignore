@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.pytest_cache/
+pyauto/
+
+.env
+.venv
+env/
+venv/
+
+# VSCode stuff
+.vscode
+
+# .gitignore

@@ -1,14 +1,12 @@
 import pytest
-from selenium.webdriver import Chrome
+from config.browser_setup import browser_setup
 from pages.sw_page import SwPage
+
+DEFAULT_TIMEOUT = 5
 
 @pytest.fixture(scope='module')
 def setUp(request):
-	driver = Chrome("/Users/suresh/workspace/pyauto/drivers/chromedriver")
-	driver.implicitly_wait(5)
+	driver = browser_setup()
+	driver.implicitly_wait(DEFAULT_TIMEOUT)
 	sw = SwPage(driver)
 	return sw
-
-@pytest.fixture(autouse=True)
-def webdriver(request):
-	pass

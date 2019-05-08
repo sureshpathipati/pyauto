@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+__pycache__
 .pytest_cache/
 pyauto/
 
@@ -11,4 +12,4 @@ venv/
 # VSCode stuff
 .vscode
 
-# .gitignore
+.gitignore

@@ -1,13 +1,12 @@
 import pytest
 
-@pytest.fixture(scope="module")
-def setup(request):
-    return "srinivas"
-
 def test_login_page(setUp):
-		browser = setUp
-		browser.base_page().navigate_to_url("https://dev.pbees.party")
-		browser.login_page().login_with({"email": "abcd@abcd.com", "password": "qwerty"})
+	browser = setUp
+	basePage = browser.base_page()
+	basePage.navigate_to_url("https://dev.pbees.party")
+	loginPage = browser.login_page()
+	user_details = {"email": "abcd@abcd.com", "password": "qwerty"}
+	loginPage.login_with(user_details)
 
 
 

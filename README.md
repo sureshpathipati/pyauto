@@ -24,4 +24,7 @@ Requriments:
     $ source <folder_name>/bin/activate
         ex: source pyauto/bin/activate
 ```
--To Deactivate the virtual env use "deactivate" command
+- To Deactivate the virtual env use "deactivate" command
+```sh
+    $ deactivate
+```

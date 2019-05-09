@@ -4,9 +4,8 @@ from pathlib import Path
 
 parent_dir = Path(__file__).resolve().parent
 
-
 def browser_setup():
-    pass
+    return firefox_browser()
     # which_browser = resolve_browser()
     # browser = which_browser
     # return browser_instance

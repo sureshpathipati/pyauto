@@ -1,7 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 
 class BasePage():
 
@@ -22,11 +23,9 @@ class BasePage():
             'details': []
         }
 
-    def wait_for_ele(self,ele,waitTime=10):
+    def wait_until_for(self,ele,waitTime=10):
         pass
-        # try:
-        # 	WebDriverWait(self.driver, waitTime).until( expected_conditions.presence_of_element_located((By.ID, "myDynamicElement")))
-        # return True
+        # return WebDriverWait(self.driver, waitTime).until()
 
     def click_ele_by_xpath(self, xpath_attr):
         try:
@@ -39,18 +38,26 @@ class BasePage():
     def has_css(self, css_value):
         """
         To check page has respective Css
-        It doesnot add to webdriver hence chaining with webelement throws error
+        It doesnot add to webdriver hence chaining with web-element throws error
         returns Boolean
         """
-        return has_attribute_checker("css", css_value)
+        return self.has_attribute_checker("css", css_value)
 
     def has_xpath(self, xpath_value):
         """
         To check page has respective Xpath
-        It doesnot add to webdriver hence chaining with webelement throws error
+        It doesnot add to webdriver hence chaining with web-element throws error
         returns Boolean
         """
-        return has_attribute_checker("xpath", xpath_value)
+        return self.has_attribute_checker("xpath", xpath_value)
+    
+    def has_id(self, id_value):
+        """
+        To check page has respective ID
+        It doesnot add to webdriver hence chaining with web-element throws error
+        returns Boolean
+        """
+        return self.has_attribute_checker("id", id_value)
 
     def has_attribute_checker(self, attribute, value):
         """
@@ -58,8 +65,10 @@ class BasePage():
         returns Boolean
         """
         try:
-            function_name = "find_element_by_{}".forrmat(attribute)
-            getattr(self.driver, function_name)(value)
+            ele_dict = { "id": By.ID, "xpath": By.XPATH, "css": By.CSS_SELECTOR }
+            WebDriverWait(self.driver, 5).until( EC.presence_of_element_located((ele_dict[attribute], value)) )
         except NoSuchElementException:
+            return False
+        except TimeoutException:
             return False
         return True

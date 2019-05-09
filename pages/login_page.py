@@ -16,9 +16,12 @@ class LoginPage(BasePage):
 
     def enter_email(self, email):
         self.enter_field("auth-modal-email", email)
+        print("Entered Email")
 
     def enter_password(self, password):
+        print("About to enter password")
         self.enter_field("auth-modal-password", password)
+        print("Entered password")
 
     def enter_field(self, id_attr, data):
         id_ele = self.driver.find_element_by_id(id_attr)

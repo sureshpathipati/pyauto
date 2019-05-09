@@ -2,7 +2,7 @@ import pytest
 from config.browser_setup import browser_setup
 from pages.sw_page import SwPage
 
-DEFAULT_TIMEOUT = 5
+DEFAULT_TIMEOUT = 10
 
 @pytest.fixture(scope='module')
 def setUp(request):

@@ -2,7 +2,7 @@ from selenium.webdriver import Firefox
 from selenium.webdriver import Chrome
 from pathlib import Path
 
-parent_dir = Path(__file__).resolve().parent
+parent_dir = Path(__file__).resolve().parent.parent
 
 def browser_setup():
     return firefox_browser()
@@ -12,7 +12,7 @@ def browser_setup():
 
 
 def firefox_browser():
-    return Firefox(executable_path=parent_dir+'/drivers/geckodriver')
+    return Firefox(executable_path=str(parent_dir)+"/drivers/geckodriver")
 
 def chrome_browser():
     return Chrome(executable_path=parent_dir+'/drivers/chromedriver')

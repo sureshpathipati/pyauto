@@ -10,3 +10,6 @@ class SwPage:
 
 	def base_page(self):
 		return BasePage(self.driver)
+
+	def quit_browser(self):
+		return self.driver.quit()

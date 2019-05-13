@@ -7,4 +7,4 @@ def test_login_page(setUp):
 	loginPage = browser.login_page()
 	user_details = {"email": "psureshkumarece@gmail.com", "password": "password"}
 	loginPage.login_with(user_details)
-
+	

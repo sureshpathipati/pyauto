@@ -52,8 +52,43 @@ class BasePage():
             'details': []
         }
 
-    def is_slim_notification(self):
-        self.has_css('pb-slim-notification')
+    def return_error_data(self):
+        return {
+            'error': True,
+            'success': False,
+            'error_message': "",
+            'details': []
+        }
+
+    # def is_slim_notification(self):
+    #     self.has_css('pb-slim-notification')
+
+    # def slim_notification(self):
+    #     return_data = self.return_data()
+    #     if not self.is_slim_notification():
+    #         error_message = {'error_message': "No Slim Notification Present"}
+    #         return dict(self.return_error_data(), **error_message)
+    #     data = self.get_slim_notification_details()
+    #     return_data['details'] = data
+    #     return return_data
+
+    # def get_slim_notification_details(self):
+    #     if not self.is_slim_notification():
+    #         return self.return_error_data()
+    #     return_data = {'type': '', 'message': ""}
+    #     # return_data['type'] = 
+    #     return_data['message'] = self.notification_text()
+    #     return return_data
+
+    def notification_text(self):
+        message = ""
+        try:
+            element =  self.driver.find_element_by_class_name("pb-slim-notification__content")
+            message = element.text
+        except:
+            print("No notification Present")
+        return message
+
 
     def wait_until_for(self,ele,waitTime=10):
         pass
@@ -97,7 +132,7 @@ class BasePage():
         """
         try:
             ele_dict = { "id": By.ID, "xpath": By.XPATH, "css": By.CSS_SELECTOR }
-            WebDriverWait(self.driver, 5).until( EC.presence_of_element_located((ele_dict[attribute], value)) )
+            WebDriverWait(self.driver, 2).until( EC.presence_of_element_located((ele_dict[attribute], value)) )
         except NoSuchElementException:
             return False
         except TimeoutException:

@@ -1,14 +1,23 @@
 import pytest
-from selenium.webdriver import Chrome
+from config.browser_setup import browser_setup
 from pages.sw_page import SwPage
 
-@pytest.fixture(scope='module')
+DEFAULT_TIMEOUT = 10
+
+# @pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def setUp(request):
-	driver = Chrome("/Users/suresh/workspace/pyauto/drivers/chromedriver")
-	driver.implicitly_wait(5)
+	driver = browser_setup()
+	driver.implicitly_wait(DEFAULT_TIMEOUT)
+	driver.set_page_load_timeout(20)
 	sw = SwPage(driver)
 	return sw
 
-@pytest.fixture(autouse=True)
-def webdriver(request):
-	pass
+	# def take_screenshot():
+	# 	driver.save_screenshot("{}.png".format(request.function.__name__))
+	# request.addfinalizer(take_screenshot)
+	# return sw
+
+
+def take_screenshot(request):
+	driver.save_screenshot(request.node.name)

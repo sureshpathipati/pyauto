@@ -1,11 +1,10 @@
 from pages.base_page import BasePage
 
-
 SIGNINLOGIN = 'Sign Up/Log In'
 
 class HomePage(BasePage):
     def __init__(self, driver):
-        self.driver = (driver)
+        self.driver = driver
 
     def is_home_page(self):
         path = self.get_current_url_path()
@@ -16,9 +15,9 @@ class HomePage(BasePage):
         return title == SIGNINLOGIN
 
     def click_create_link(self):
-        main_section = self.main_link_section()
-        create_link_button = main_section.find_element_by_xpath("//span[contains(text(),'Create')]")
-        create_link_button.click()
+        self.wait_for_page_to_load()
+        create_link = self.driver.find_element_by_xpath('//span[text()="Create"]')
+        create_link.click()
         self.wait_for_page_to_load()
 
     def main_link_section(self):

@@ -18,9 +18,11 @@ class LoginPage(BasePage):
         return message == 'Login Successful'
 
     def enter_email(self, email):
+        self.wait_for_page_to_load()
         self.enter_field("auth-modal-email", email)
 
     def enter_password(self, password):
+        self.wait_for_page_to_load()
         self.enter_field("auth-modal-password", password)
 
     def enter_field(self, id_attr, data):
@@ -29,9 +31,11 @@ class LoginPage(BasePage):
         id_ele.send_keys(data)
 
     def click_next(self):
+        self.wait_for_page_to_load()
         self.click_ele_by_xpath('//button[text()="Next"]')
 
     def click_login(self):
+        self.wait_for_page_to_load()
         self.click_ele_by_xpath('//button[text()="Log In"]')
 
     def login_error():

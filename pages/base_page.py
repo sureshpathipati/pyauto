@@ -1,5 +1,5 @@
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
@@ -60,6 +60,9 @@ class BasePage():
             'details': []
         }
 
+    def modal_content(self):
+        return self.driver.find_element_by_css_selector('div.modal-content')
+
     # def is_slim_notification(self):
     #     self.has_css('pb-slim-notification')
 
@@ -89,6 +92,13 @@ class BasePage():
             print("No notification Present")
         return message
 
+    def explicit_element(self, ele_data):
+        timeout = ele_data.get('timeout', 5)
+        value = ele_data.get('attribute_value')
+        webelement = WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located((By.XPATH, value))
+            )
+        return webelement
 
     def wait_until_for(self,ele,waitTime=10):
         pass
@@ -132,7 +142,7 @@ class BasePage():
         """
         try:
             ele_dict = { "id": By.ID, "xpath": By.XPATH, "css": By.CSS_SELECTOR }
-            WebDriverWait(self.driver, 2).until( EC.presence_of_element_located((ele_dict[attribute], value)) )
+            WebDriverWait(self.driver, 5).until( EC.presence_of_element_located((ele_dict[attribute], value)) )
         except NoSuchElementException:
             return False
         except TimeoutException:

@@ -12,4 +12,5 @@ venv/
 # VSCode stuff
 .vscode
 
-.gitignore
+# .gitignore
+geckodriver.log

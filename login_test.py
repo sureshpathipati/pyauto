@@ -8,7 +8,7 @@ def test_login_page(setUp):
 	loginPage = browser.login_page()
 	homePage = browser.home_page()
 	basePage.navigate_to_url(base_url)
-	user_details = {"email": "psureshkumarece@gmail.com", "password": "password"}
+	user_details = {"email": "psuresh@gmail.com", "password": ""}
 	loginPage.login_with(user_details)
 	notification_message = homePage.notification_text()
 	assert loginPage.is_login_successful(notification_message) == True
@@ -17,5 +17,5 @@ def test_login_page(setUp):
 	
 	
 	
-	
+
 	

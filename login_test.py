@@ -14,3 +14,5 @@ def test_login_page(setUp):
 	assert loginPage.is_login_successful(notification_message) == True
 	assert homePage.is_home_page() == True
 	assert homePage.is_guest_user() == False
+
+	

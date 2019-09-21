@@ -1,6 +1,6 @@
 import pytest
 
-base_url = 'https://dev.pbees.party'
+base_url = 'https://.party'
 
 def test_login_page(setUp):
 	browser = setUp

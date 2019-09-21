@@ -15,3 +15,6 @@ def test_login_page(setUp):
 	assert homePage.is_home_page() == True
 	assert homePage.is_guest_user() == False
 
+
+	
+	

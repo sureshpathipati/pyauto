@@ -3,7 +3,7 @@ attrs==19.1.0
 more-itertools==7.0.0
 pathlib2==2.3.3
 pluggy==0.11.0
-py==1.8.0
+py==1.10.0
 pytest==4.4.1
 pytest-html==1.20.0
 pytest-metadata==1.8.0
